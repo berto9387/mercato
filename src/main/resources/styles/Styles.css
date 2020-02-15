@@ -3,7 +3,7 @@
     src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 }
 .root{
-    -fx-background-image:url("/img/back.jpeg");
+    -fx-background-image:url("../img/back.jpeg");
     -fx-background-size:cover;
 }
 .loginPageButtons{
@@ -26,9 +26,30 @@
     
 }
 .inputField{
+    -fx-font-family:Roboto;
     -fx-background-color:transparent;
     -fx-prompt-text-fill:white;
+    -fx-text-fill:white;
 }
+.choiceBoxField{
+    -fx-font-family:Roboto;
+    -fx-background-color:transparent;
+    
+    -fx-mark-size:3em;
+}
+.choiceBoxField .menu-item:focused{
+    -fx-background-color: orange; 
+}
+.choiceBoxField  > .label { 
+    -fx-text-fill: white; 
+}
+.choiceBoxField .arrow { 
+   -fx-background-color:orange;
+   -fx-min-width:2em;
+   -fx-min-height:1em;
+   
+}
+
 .icon{
     -fx-font-size:1.3em;
 }
@@ -45,5 +66,5 @@
 }
 .enterButton .icon{
     -fx-font-size:2em;
-    -fx-text-fill:white;
+    -fx-fill:white;
 }

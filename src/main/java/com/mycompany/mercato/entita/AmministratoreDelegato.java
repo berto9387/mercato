@@ -5,10 +5,16 @@
  */
 package com.mycompany.mercato.entita;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author tony_
  */
 public class AmministratoreDelegato extends UtenteSocieta{
+
+    public AmministratoreDelegato(Societa societa, ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti, String id, String nome, String cognome, String email, String ruolo) {
+        super(societa, giocatoriPreferitiAggiunti, id, nome, cognome, email, ruolo);
+    }
     
 }

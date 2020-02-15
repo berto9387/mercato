@@ -10,5 +10,9 @@ package com.mycompany.mercato.entita;
  * @author tony_
  */
 public class AmministratoreSistema extends Utente{
+
+    public AmministratoreSistema(String id, String nome, String cognome, String email, String ruolo) {
+        super(id, nome, cognome, email, ruolo);
+    }
     
 }

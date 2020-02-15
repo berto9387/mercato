@@ -14,5 +14,10 @@ import java.util.ArrayList;
 public class Allenatore extends UtenteSocieta{
     
     private ArrayList<ProfiloInteresse> profiloInteresse;
+
+    public Allenatore(ArrayList<ProfiloInteresse> profiloInteresse, Societa societa, ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti, String id, String nome, String cognome, String email, String ruolo) {
+        super(societa, giocatoriPreferitiAggiunti, id, nome, cognome, email, ruolo);
+        this.profiloInteresse = profiloInteresse;
+    }
     
 }
