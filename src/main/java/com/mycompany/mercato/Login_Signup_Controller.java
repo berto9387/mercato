@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class LoginController implements Initializable {
+public class Login_Signup_Controller implements Initializable {
     
     private LoginModel model;
     private Utente utente;
