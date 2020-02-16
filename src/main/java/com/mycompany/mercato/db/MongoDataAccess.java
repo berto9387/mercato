@@ -1,5 +1,6 @@
 package com.mycompany.mercato.db;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.*;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -7,7 +8,11 @@ import com.mycompany.mercato.allenatore.AllenatoreInterface;
 import com.mycompany.mercato.amministratoreDelegato.AmministratoreDelegatoInterface;
 import com.mycompany.mercato.amministratoreSquadra.AmministratoreSquadraInterface;
 import com.mycompany.mercato.amministratoresSistema.AmministratoreSistemaInterface;
+import com.mycompany.mercato.entita.*;
 import com.mycompany.mercato.osservatore.OsservatoreInterface;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bson.Document;
 
 /**
@@ -88,22 +93,34 @@ public class MongoDataAccess implements AmministratoreSistemaInterface, Amminist
         return 0;
     }
     
-    public Document login(String email,String password){
-        Document utente = null;
+    public Utente login(String email,String password){
+        Utente utente=null;
+        Document utenteDoc;
+        ObjectMapper objectMapper = new ObjectMapper();
+       
         try {
             apriConnessione(nomeCollectionUtenti);
         } catch (Exception e) {
             return null;
         }
         try{
-            utente = (Document) collection.find(and(eq("email", email), eq("password", password))).first();
+            utenteDoc = collection.find(and(eq("email", email), eq("password", password))).first();
             
         } catch(Exception e){
             return null;
         }finally{
             chiudiConnessione();
-            return utente;
+            
         }
+        if(utenteDoc.getString("ruolo").equals(("admin"))){
+            try {
+                utente=objectMapper.readValue(utenteDoc.toJson(), Utente.class);
+            } catch (IOException ex) {
+                Logger.getLogger(MongoDataAccess.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+        System.out.println(utente.toString());
+        return null;
     }
     
     

@@ -5,32 +5,43 @@
  */
 package com.mycompany.mercato.entita;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.mongojack.ObjectId;
+
 /**
  *
  * @author tony_
  */
 public class Utente {
-    protected String id;
+    private String id;
+    @ObjectId
+    @JsonProperty("_id")
+    public String getId() {
+        return id;
+    }
+    @ObjectId
+    @JsonProperty("_id")
+    public void setId(String id) {
+        this.id = id;
+    }
     protected String nome;
     protected String cognome;
     protected String email;
     protected String ruolo;
-
-    public Utente(String id, String nome, String cognome, String email, String ruolo) {
-        this.id = id;
+    public Utente(){};
+    public Utente(String nome, String cognome, String email, String ruolo) {
+        
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.ruolo = ruolo;
     }
 
-    public String getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Utente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", ruolo=" + ruolo + '}';
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;

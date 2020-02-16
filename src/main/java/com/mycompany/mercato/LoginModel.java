@@ -18,6 +18,7 @@ import org.bson.Document;
 public class LoginModel {
     
     private MongoDataAccess db;
+    private Utente utente;
     public LoginModel(){
         db=new MongoDataAccess();
     }
@@ -27,26 +28,15 @@ public class LoginModel {
     }
     
     public Utente login(String email, String password){
-        Utente utente = null;
-        Document utenteDoc = db.login(email, password);
         
-        if(utenteDoc.getString("ruolo").equals(("admin"))){
-            utente = new Utente(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"), 
-                                 utenteDoc.getString("cognome"),  utenteDoc.getString("email"),  utenteDoc.getString("ruolo"));
-        } else{
-            String idSquadra = utenteDoc.getString("societa");
-            
-            Societa societa = new Societa(idSquadra);
+        
             
             
-            utente = new UtenteSocieta(societa, null, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"), 
-                                 utenteDoc.getString("cognome"),  utenteDoc.getString("email"),  utenteDoc.getString("ruolo"));
+        db.login(email, password);
         
-            //CONTROLLARE SE E' ADMIN SQUADRA (CAMPO TEAM)
-            //CON
-        }
+        return null;
         
-        return utente;
+        
     }
     
 }

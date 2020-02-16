@@ -89,6 +89,7 @@ public class Login_Signup_Controller implements Initializable {
     void login(ActionEvent event) {
         String email=emailField.getText().toLowerCase();
         String password=passwordField.getText().toLowerCase();
+        model.login(email, password);
         
         
     }

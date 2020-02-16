@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class AmministratoreDelegato extends UtenteSocieta{
 
-    public AmministratoreDelegato(Societa societa, ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti, String id, String nome, String cognome, String email, String ruolo) {
-        super(societa, giocatoriPreferitiAggiunti, id, nome, cognome, email, ruolo);
+    public AmministratoreDelegato(String nome, String cognome, String email, String ruolo) {
+        super(nome, cognome, email, ruolo);
     }
     
 }

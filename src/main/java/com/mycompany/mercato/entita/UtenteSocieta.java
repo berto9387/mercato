@@ -16,9 +16,23 @@ public class UtenteSocieta extends Utente{
     private Societa societa;
     private ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti;
 
-    public UtenteSocieta(Societa societa, ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti, String id, String nome, String cognome, String email, String ruolo) {
-        super(id, nome, cognome, email, ruolo);
+    public UtenteSocieta(String nome, String cognome, String email, String ruolo) {
+        super(nome, cognome, email, ruolo);
+    }
+
+    public Societa getSocieta() {
+        return societa;
+    }
+
+    public void setSocieta(Societa societa) {
         this.societa = societa;
+    }
+
+    public ArrayList<GiocatorePreferito> getGiocatoriPreferitiAggiunti() {
+        return giocatoriPreferitiAggiunti;
+    }
+
+    public void setGiocatoriPreferitiAggiunti(ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti) {
         this.giocatoriPreferitiAggiunti = giocatoriPreferitiAggiunti;
     }
 
