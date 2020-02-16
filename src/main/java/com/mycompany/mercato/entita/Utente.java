@@ -5,29 +5,32 @@
  */
 package com.mycompany.mercato.entita;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.mongojack.ObjectId;
-
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.mycompany.mercato.ObjectIdDeserializer;
+import org.bson.types.ObjectId;
+import org.mongojack.Id;
 /**
  *
  * @author tony_
  */
 public class Utente {
-    private String id;
-    @ObjectId
-    @JsonProperty("_id")
-    public String getId() {
-        return id;
+    
+    @Id
+    @JsonDeserialize(using = ObjectIdDeserializer.class)
+    private ObjectId _id;
+    private String nome;
+    private String cognome;
+    private String email;
+    private String password;
+    private String ruolo;
+
+    public ObjectId getId() {
+        return _id;
     }
-    @ObjectId
-    @JsonProperty("_id")
-    public void setId(String id) {
-        this.id = id;
+
+    public void setId(ObjectId id) {
+        this._id = id;
     }
-    protected String nome;
-    protected String cognome;
-    protected String email;
-    protected String ruolo;
     public Utente(){};
     public Utente(String nome, String cognome, String email, String ruolo) {
         
@@ -39,8 +42,19 @@ public class Utente {
 
     @Override
     public String toString() {
-        return "Utente{" + "id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", ruolo=" + ruolo + '}';
+        return "Utente{" + "_id=" + _id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password=" + password + ", ruolo=" + ruolo + '}';
     }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
 
 
     public String getNome() {

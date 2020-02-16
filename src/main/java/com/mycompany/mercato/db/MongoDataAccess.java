@@ -113,6 +113,7 @@ public class MongoDataAccess implements AmministratoreSistemaInterface, Amminist
             
         }
         if(utenteDoc.getString("ruolo").equals(("admin"))){
+            System.err.println("Trovato");
             try {
                 utente=objectMapper.readValue(utenteDoc.toJson(), Utente.class);
             } catch (IOException ex) {
