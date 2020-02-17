@@ -30,5 +30,9 @@ public class Calciatore extends InformazioniPrincipali{
     private ArrayList<Statistica> statistiche;
     private ArrayList<Trasferimento> trasferimenti;
     private ArrayList<Infortunio> infortuni;
+
+    public Calciatore(String _id, String nome, String ruoloPrincipale, String squadra, Date dataNascita, String valoreMercato, String nazionalita, int giudizioDirigenza, int giudizioAllenatore) {
+        super(_id, nome, ruoloPrincipale, squadra, dataNascita, valoreMercato, nazionalita, giudizioDirigenza, giudizioAllenatore);
+    }
     
 }

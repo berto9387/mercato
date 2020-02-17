@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'Roboto';
-    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-}
+
 .root{
     -fx-background-image:url("../img/back.jpeg");
     -fx-background-size:cover;
@@ -67,4 +64,12 @@
 .enterButton .icon{
     -fx-font-size:2em;
     -fx-fill:white;
+}
+
+
+.err_label{
+    -fx-text-fill: #ff9933;
+    -fx-font-family: Roboto;
+    -fx-font-size:1.3em;
+    -fx-font-weight:bold;
 }

@@ -24,6 +24,21 @@ public class InformazioniPrincipali {
     private int giudizioDirigenza;
     private int giudizioAllenatore;
     
-    private Report report;
-    private UtenteSocieta aggiuntoDa;
+    //COMMENTATE PER FARE LE PROVE PER IL LOGIN!!!
+//    private Report report;
+//    private UtenteSocieta aggiuntoDa;
+
+    public InformazioniPrincipali(String _id, String nome, String ruoloPrincipale, String squadra, Date dataNascita, String valoreMercato, String nazionalita, int giudizioDirigenza, int giudizioAllenatore) {
+        this._id = _id;
+        this.nome = nome;
+        this.ruoloPrincipale = ruoloPrincipale;
+        this.squadra = squadra;
+        this.dataNascita = dataNascita;
+        this.valoreMercato = valoreMercato;
+        this.nazionalita = nazionalita;
+        this.giudizioDirigenza = giudizioDirigenza;
+        this.giudizioAllenatore = giudizioAllenatore;
+    }
+    
+    
 }

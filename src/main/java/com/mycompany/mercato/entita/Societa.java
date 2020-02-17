@@ -18,7 +18,7 @@ public class Societa {
     private String nazione;
     private ArrayList<UtenteSocieta> teamSocieta;
     private ArrayList<ProfiloInteresse> profiliInteresse;
-    private ArrayList<InformazioniPrincipali> giocatoriPreferiti;
+    private ArrayList<InformazioniPrincipali> giocatoriPreferiti = new ArrayList<InformazioniPrincipali>();
 
     public Societa() {
     }
@@ -31,8 +31,6 @@ public class Societa {
         this.profiliInteresse = profiliInteresse;
         this.giocatoriPreferiti = giocatoriPreferiti;
     }
-
-    
 
     public String getId() {
         return id;
@@ -80,6 +78,10 @@ public class Societa {
 
     public void setGiocatoriPreferiti(ArrayList<InformazioniPrincipali> giocatoriPreferiti) {
         this.giocatoriPreferiti = giocatoriPreferiti;
+    }
+
+    public void addGiocatorePreferito(InformazioniPrincipali nuovoGiocatorePreferito) {
+        this.giocatoriPreferiti.add(nuovoGiocatorePreferito);
     }
     
     

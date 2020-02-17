@@ -26,6 +26,7 @@ public class LoginModel {
     public int registraUtente(String nome,String cognome,String email,String password,String ruolo){
         
         return db.registraUtente(nome,cognome,email,password,ruolo);
+        
     }
     
     public int login(String email, String password){            

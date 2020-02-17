@@ -53,7 +53,9 @@ public class Login_Signup_Controller implements Initializable {
     @FXML
     private  ChoiceBox<String> scegliRuoloRegistrazione;
     
-
+    @FXML
+    private Label err_label;
+    
     @FXML
     private Button registratiButton;
 
@@ -83,6 +85,12 @@ public class Login_Signup_Controller implements Initializable {
         String password=passwordRegistrazione.getText().toLowerCase();
         String ruolo=scegliRuoloRegistrazione.getValue().toLowerCase();
         int creazioneUtente=model.registraUtente(nome,cognome,email,password,ruolo);
+        if(creazioneUtente == 1){
+            err_label.setText("Email già presente");
+            err_label.setVisible(true);
+        } else if (creazioneUtente == 0){
+            err_label.setVisible(false);
+        }
         System.err.println(creazioneUtente);
     }
     @FXML
@@ -90,8 +98,6 @@ public class Login_Signup_Controller implements Initializable {
         String email=emailField.getText().toLowerCase();
         String password=passwordField.getText().toLowerCase();
         model.login(email, password);
-        
-        
     }
     
     @FXML
@@ -99,5 +105,6 @@ public class Login_Signup_Controller implements Initializable {
         scegliRuoloRegistrazione.setItems(ruoli);
         scegliRuoloRegistrazione.setValue("Allenatore");
         model=new LoginModel();
+        err_label.setVisible(false);
     }    
 }

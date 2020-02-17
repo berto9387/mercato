@@ -13,6 +13,7 @@ import com.mycompany.mercato.amministratoresSistema.AmministratoreSistemaInterfa
 import com.mycompany.mercato.entita.*;
 import com.mycompany.mercato.osservatore.OsservatoreInterface;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -188,12 +189,15 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
                 if(societaDoc.getString("nazione")!=null){
                     soc.setNazione(societaDoc.getString("nazione"));
                 } 
-                if(societaDoc.getString("giocatoriPreferiti")!=null){
-                    List<Document> list=(List<Document>)societaDoc.get("listaPreferiti");
+                if(societaDoc.get("giocatoriPreferiti")!=null){
+                    List<Document> list=(List<Document>)societaDoc.get("giocatoriPreferiti");
                     for(Document doc: list){
-                        GiocatorePreferito aux=new GiocatorePreferito();
+                        InformazioniPrincipali aux=new InformazioniPrincipali(doc.getObjectId("_id").toString(), doc.getString("nome"), doc.getString("ruoloPrincipale"), 
+                                                                                doc.getString("squadra"), new Date(doc.getLong("dataNascita")), doc.getString("valoreMercato"), 
+                                                                                doc.getString("nazionalita"), doc.getInteger("giudizioDirigenza"), doc.getInteger("giudizioAllenatore"));
+                    
+                       soc.addGiocatorePreferito(aux);
                     }
-                    ProfiloInteresse aux=
                 }
             }
             
