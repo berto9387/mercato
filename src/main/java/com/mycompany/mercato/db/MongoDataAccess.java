@@ -5,6 +5,7 @@ import com.mongodb.client.*;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Projections.exclude;
+import com.mycompany.mercato.GeneralGrafic;
 import com.mycompany.mercato.allenatore.AllenatoreInterface;
 import com.mycompany.mercato.amministratoreDelegato.AmministratoreDelegatoInterface;
 import com.mycompany.mercato.amministratoreSquadra.AmministratoreSquadraInterface;
@@ -157,25 +158,21 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
     }
     /**
      * La funzione è usato per loggare l'utente
-     * @param utente
      * @param email
      * @param password
-     * @return 0:login è andato a buon fine; 1:l'email non esiste;2:password errata;3:altri errori
+     * @return 0:login è andato a buon fine; 1:email o password errate;2:altri errori
      */
     public int login(String email,String password){
-        int cercaUtente=controllaEsistenzaUtente(email);
-        if(cercaUtente!=1){
-            return 1;
-        }
         
         Document utenteDoc=ricercaUtente(email, password);
         if(utenteDoc==null){
-            return 2;
+            return 1;
         }
         
         if(utenteDoc.getString("ruolo").equals(("admin"))){
-            amministratoreSistema=new AmministratoreSistema(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+            admin=new AmministratoreSistema(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
+            System.out.println("Sono ADMIN");
             return 0;
         } else {
             boolean haUnaSocieta=false;
@@ -184,19 +181,22 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
                 haUnaSocieta=true;
             }
             Societa soc=new Societa();
-            if(societaDoc.getObjectId("_id")!=null){
+            if(haUnaSocieta){
+               if(societaDoc.getObjectId("_id")!=null){
                 
-            } else if(societaDoc.getString("nomeSocieta")!=null){
-                
-            } else if(societaDoc.getString("nazione")!=null){
-                
-            } else if(societaDoc.getString("listaPreferiti")!=null){
-                
-            } else if((societaDoc.getString("listaProfiliDiInteresse")!=null)){
-                
+                } else if(societaDoc.getString("nomeSocieta")!=null){
+
+                } else if(societaDoc.getString("nazione")!=null){
+
+                } else if(societaDoc.getString("listaPreferiti")!=null){
+
+                } else if((societaDoc.getString("listaProfiliDiInteresse")!=null)){
+
+                } 
             }
-            utente=new UtenteSocieta(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
-                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
+            
+            //utente=new UtenteSocieta(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+            //        utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             if(utenteDoc.getString("ruolo").equals(("allenatore"))){
                 
             } else if(utenteDoc.getString("ruolo").equals(("osservatore"))){
@@ -206,8 +206,7 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
             } 
             
         }
-        System.out.println(utente.toString());
-        return null;
+        return 9;
     }
     
     

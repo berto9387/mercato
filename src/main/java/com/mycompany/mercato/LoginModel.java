@@ -28,9 +28,11 @@ public class LoginModel {
         return db.registraUtente(nome,cognome,email,password,ruolo);
     }
     
-    public Utente login(String email, String password){            
-        db.login(email, password);        
-        return null;
+    public int login(String email, String password){            
+        int err=db.login(email, password); 
+        System.err.println(err);
+        GeneralGrafic.admin.toString();
+        return err;
         
         
     }

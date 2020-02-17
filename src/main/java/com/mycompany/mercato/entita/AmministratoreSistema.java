@@ -15,6 +15,11 @@ public class AmministratoreSistema extends Utente{
         super(_id, nome, cognome, email, ruolo);
     }
 
+    @Override
+    public String toString() {
+        return super.toString(); 
+    }
+
     
     
     

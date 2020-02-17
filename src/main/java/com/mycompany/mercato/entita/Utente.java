@@ -12,11 +12,11 @@ package com.mycompany.mercato.entita;
 public abstract class Utente {
     
     
-    private String _id;
-    private String nome;
-    private String cognome;
-    private String email;
-    private String ruolo;
+    protected String _id;
+    protected String nome;
+    protected String cognome;
+    protected String email;
+    protected String ruolo;
 
     public Utente(String _id, String nome, String cognome, String email, String ruolo) {
         this._id = _id;
