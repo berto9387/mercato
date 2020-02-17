@@ -18,12 +18,12 @@ public class Societa {
     private String nazione;
     private ArrayList<UtenteSocieta> teamSocieta;
     private ArrayList<ProfiloInteresse> profiliInteresse;
-    private ArrayList<GiocatorePreferito> giocatoriPreferiti;
+    private ArrayList<InformazioniPrincipali> giocatoriPreferiti;
 
     public Societa() {
     }
     
-    public Societa(String id, String nomeSocieta, String nazione, ArrayList<UtenteSocieta> teamSocieta, ArrayList<ProfiloInteresse> profiliInteresse, ArrayList<GiocatorePreferito> giocatoriPreferiti) {
+    public Societa(String id, String nomeSocieta, String nazione, ArrayList<UtenteSocieta> teamSocieta, ArrayList<ProfiloInteresse> profiliInteresse, ArrayList<InformazioniPrincipali> giocatoriPreferiti) {
         this.id = id;
         this.nomeSocieta = nomeSocieta;
         this.nazione = nazione;
@@ -74,11 +74,11 @@ public class Societa {
         this.profiliInteresse = profiliInteresse;
     }
 
-    public ArrayList<GiocatorePreferito> getGiocatoriPreferiti() {
+    public ArrayList<InformazioniPrincipali> getGiocatoriPreferiti() {
         return giocatoriPreferiti;
     }
 
-    public void setGiocatoriPreferiti(ArrayList<GiocatorePreferito> giocatoriPreferiti) {
+    public void setGiocatoriPreferiti(ArrayList<InformazioniPrincipali> giocatoriPreferiti) {
         this.giocatoriPreferiti = giocatoriPreferiti;
     }
     

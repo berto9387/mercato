@@ -12,23 +12,54 @@ import java.util.ArrayList;
  * @author tony_
  */
 public class AmministratoreSquadra extends UtenteSocieta{
-    private ArrayList<UtenteSocieta> teamSocieta;
+    private String allenatoreId;
+    private String osservatoreId;
+    private String adId;
 
-    public AmministratoreSquadra(ArrayList<UtenteSocieta> teamSocieta, String _id, String nome, String cognome, String email, String ruolo) {
-        super(_id, nome, cognome, email, ruolo);
-        this.teamSocieta = teamSocieta;
+    public AmministratoreSquadra() {
     }
+
+    public AmministratoreSquadra(String allenatoreId, String osservatoreId, String adId, Societa societa, String _id, String nome, String cognome, String email, String ruolo) {
+        super(societa, _id, nome, cognome, email, ruolo);
+        this.allenatoreId = allenatoreId;
+        this.osservatoreId = osservatoreId;
+        this.adId = adId;
+    }
+
+    public String getAllenatoreId() {
+        return allenatoreId;
+    }
+
+    public void setAllenatoreId(String allenatoreId) {
+        this.allenatoreId = allenatoreId;
+    }
+
+    public String getOsservatoreId() {
+        return osservatoreId;
+    }
+
+    public void setOsservatoreId(String osservatoreId) {
+        this.osservatoreId = osservatoreId;
+    }
+
+    public String getAdId() {
+        return adId;
+    }
+
+    public void setAdId(String adId) {
+        this.adId = adId;
+    }
+
+    
+
+    
+    
+    
 
 
     
     
 
-    public ArrayList<UtenteSocieta> getTeamSocieta() {
-        return teamSocieta;
-    }
-
-    public void setTeamSocieta(ArrayList<UtenteSocieta> teamSocieta) {
-        this.teamSocieta = teamSocieta;
-    }
+    
     
 }

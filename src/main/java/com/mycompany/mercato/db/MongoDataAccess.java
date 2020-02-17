@@ -13,6 +13,7 @@ import com.mycompany.mercato.amministratoresSistema.AmministratoreSistemaInterfa
 import com.mycompany.mercato.entita.*;
 import com.mycompany.mercato.osservatore.OsservatoreInterface;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.bson.Document;
@@ -172,41 +173,48 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
         if(utenteDoc.getString("ruolo").equals(("admin"))){
             admin=new AmministratoreSistema(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
-            System.out.println("Sono ADMIN");
             return 0;
         } else {
-            boolean haUnaSocieta=false;
             Document societaDoc=ricercaSocieta(utenteDoc.getObjectId("societa"));
-            if(societaDoc!=null){
-                haUnaSocieta=true;
-            }
             Societa soc=new Societa();
-            if(haUnaSocieta){
-               if(societaDoc.getObjectId("_id")!=null){
-                
-                } else if(societaDoc.getString("nomeSocieta")!=null){
-
-                } else if(societaDoc.getString("nazione")!=null){
-
-                } else if(societaDoc.getString("listaPreferiti")!=null){
-
-                } else if((societaDoc.getString("listaProfiliDiInteresse")!=null)){
-
+       
+            if(societaDoc!=null){
+                if(societaDoc.getObjectId("_id")!=null){
+                    soc.setId(societaDoc.getObjectId("_id").toString());
                 } 
+                if(societaDoc.getString("nomeSocieta")!=null){
+                    soc.setNomeSocieta(societaDoc.getString("nomeSocieta"));
+                }
+                if(societaDoc.getString("nazione")!=null){
+                    soc.setNazione(societaDoc.getString("nazione"));
+                } 
+                if(societaDoc.getString("giocatoriPreferiti")!=null){
+                    List<Document> list=(List<Document>)societaDoc.get("listaPreferiti");
+                    for(Document doc: list){
+                        GiocatorePreferito aux=new GiocatorePreferito();
+                    }
+                    ProfiloInteresse aux=
+                }
             }
             
-            //utente=new UtenteSocieta(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
-            //        utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             if(utenteDoc.getString("ruolo").equals(("allenatore"))){
-                
+                allenatore=new Allenatore(soc,utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             } else if(utenteDoc.getString("ruolo").equals(("osservatore"))){
-                
+                osservatore=new Osservatore(null, soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
+            }else if(utenteDoc.getString("ruolo").equals(("amministratore delegato"))){
+                ad=new AmministratoreDelegato(soc,utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             } else{
-                
+                //gestire il team società
+                adminSquadra=new AmministratoreSquadra(societaDoc.getString("allenatore"),societaDoc.getString("osservatore"),societaDoc.getString("amministratoreDelegato"),soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             } 
+            System.out.println(societaDoc.toString());
             
         }
-        return 9;
+        return 0;
     }
     
     

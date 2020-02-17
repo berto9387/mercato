@@ -21,6 +21,12 @@ public class GeneralGrafic{
     {
         mainScene=scene;
         mainStage=stage;
+        admin=new AmministratoreSistema();
+        adminSquadra=new AmministratoreSquadra();
+        allenatore=new Allenatore();
+        ad=new AmministratoreDelegato();
+        osservatore=new Osservatore();
+               
     }
 }
 /*

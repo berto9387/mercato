@@ -11,6 +11,9 @@ package com.mycompany.mercato.entita;
  */
 public class AmministratoreSistema extends Utente{
 
+    public AmministratoreSistema() {
+    }
+    
     public AmministratoreSistema(String _id, String nome, String cognome, String email, String ruolo) {
         super(_id, nome, cognome, email, ruolo);
     }

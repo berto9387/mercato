@@ -30,8 +30,7 @@ public class LoginModel {
     
     public int login(String email, String password){            
         int err=db.login(email, password); 
-        System.err.println(err);
-        GeneralGrafic.admin.toString();
+        System.err.println(GeneralGrafic.allenatore.toString());
         return err;
         
         

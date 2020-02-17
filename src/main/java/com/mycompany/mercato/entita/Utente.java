@@ -12,12 +12,15 @@ package com.mycompany.mercato.entita;
 public abstract class Utente {
     
     
-    protected String _id;
-    protected String nome;
-    protected String cognome;
-    protected String email;
-    protected String ruolo;
+    private String _id;
+    private String nome;
+    private String cognome;
+    private String email;
+    private String ruolo;
 
+    public Utente() {
+    }
+    
     public Utente(String _id, String nome, String cognome, String email, String ruolo) {
         this._id = _id;
         this.nome = nome;
@@ -70,6 +73,8 @@ public abstract class Utente {
     public String toString() {
         return "Utente{" + "_id=" + _id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", ruolo=" + ruolo + '}';
     }
+
+    
 
     
     

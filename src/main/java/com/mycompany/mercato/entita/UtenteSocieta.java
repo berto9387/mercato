@@ -14,11 +14,18 @@ import java.util.ArrayList;
 public class UtenteSocieta extends Utente{
     
     private Societa societa;
-    private ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti;
 
-    public UtenteSocieta(String _id, String nome, String cognome, String email, String ruolo) {
-        super(_id, nome, cognome, email, ruolo);
+    public UtenteSocieta() {
     }
+
+    
+
+    public UtenteSocieta(Societa societa, String _id, String nome, String cognome, String email, String ruolo) {
+        super(_id, nome, cognome, email, ruolo);
+        this.societa = societa;
+    }
+    
+    
     
     
 
@@ -30,14 +37,12 @@ public class UtenteSocieta extends Utente{
         this.societa = societa;
     }
 
-    public ArrayList<GiocatorePreferito> getGiocatoriPreferitiAggiunti() {
-        return giocatoriPreferitiAggiunti;
+    @Override
+    public String toString() {
+        return super.toString()+"-->"+societa.getNazione(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void setGiocatoriPreferitiAggiunti(ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti) {
-        this.giocatoriPreferitiAggiunti = giocatoriPreferitiAggiunti;
-    }
     
-
+    
     
 }
