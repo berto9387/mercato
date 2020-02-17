@@ -21,7 +21,7 @@ import org.bson.types.ObjectId;
  *
  * @author tony_
  */
-public class MongoDataAccess implements AmministratoreSistemaInterface, AmministratoreDelegatoInterface, AmministratoreSquadraInterface,
+public class MongoDataAccess extends GeneralGrafic implements AmministratoreSistemaInterface, AmministratoreDelegatoInterface, AmministratoreSquadraInterface,
                                         AllenatoreInterface, OsservatoreInterface{
 
     private MongoClient mongoClient;
@@ -162,13 +162,52 @@ public class MongoDataAccess implements AmministratoreSistemaInterface, Amminist
      * @param password
      * @return 0:login è andato a buon fine; 1:l'email non esiste;2:password errata;3:altri errori
      */
-    public int login(Utente utente,String email,String password){
+    public int login(String email,String password){
         int cercaUtente=controllaEsistenzaUtente(email);
         if(cercaUtente!=1){
-            utente=null;
             return 1;
         }
-        return 0;
+        
+        Document utenteDoc=ricercaUtente(email, password);
+        if(utenteDoc==null){
+            return 2;
+        }
+        
+        if(utenteDoc.getString("ruolo").equals(("admin"))){
+            amministratoreSistema=new AmministratoreSistema(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
+            return 0;
+        } else {
+            boolean haUnaSocieta=false;
+            Document societaDoc=ricercaSocieta(utenteDoc.getObjectId("societa"));
+            if(societaDoc!=null){
+                haUnaSocieta=true;
+            }
+            Societa soc=new Societa();
+            if(societaDoc.getObjectId("_id")!=null){
+                
+            } else if(societaDoc.getString("nomeSocieta")!=null){
+                
+            } else if(societaDoc.getString("nazione")!=null){
+                
+            } else if(societaDoc.getString("listaPreferiti")!=null){
+                
+            } else if((societaDoc.getString("listaProfiliDiInteresse")!=null)){
+                
+            }
+            utente=new UtenteSocieta(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
+            if(utenteDoc.getString("ruolo").equals(("allenatore"))){
+                
+            } else if(utenteDoc.getString("ruolo").equals(("osservatore"))){
+                
+            } else{
+                
+            } 
+            
+        }
+        System.out.println(utente.toString());
+        return null;
     }
     
     

@@ -6,6 +6,7 @@
 package com.mycompany.mercato;
 
 import com.mycompany.mercato.db.MongoDataAccess;
+import com.mycompany.mercato.entita.AmministratoreSistema;
 import com.mycompany.mercato.entita.Societa;
 import com.mycompany.mercato.entita.Utente;
 import com.mycompany.mercato.entita.UtenteSocieta;
@@ -27,23 +28,8 @@ public class LoginModel {
         return db.registraUtente(nome,cognome,email,password,ruolo);
     }
     
-    public Utente login(String email, String password,String ruolo){
-        
-        if(ruolo.equals("admin")){
-            
-        } else if(ruolo.equals("amministratore delegato")){
-            
-        } else if(ruolo.equals("amministratore di squadra")){
-            
-        } else if(ruolo.equals("allenatore")){
-            
-        } else {
-            
-        }
-            
-            
-        db.login(email, password,ruolo);
-        
+    public Utente login(String email, String password){            
+        db.login(email, password);        
         return null;
         
         

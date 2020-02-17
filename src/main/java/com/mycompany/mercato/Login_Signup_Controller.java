@@ -52,8 +52,6 @@ public class Login_Signup_Controller implements Initializable {
 
     @FXML
     private  ChoiceBox<String> scegliRuoloRegistrazione;
-    @FXML
-    private ChoiceBox<String> scegliRuoloLogin;
     
 
     @FXML
@@ -91,16 +89,13 @@ public class Login_Signup_Controller implements Initializable {
     void login(ActionEvent event) {
         String email=emailField.getText().toLowerCase();
         String password=passwordField.getText().toLowerCase();
-        String ruolo=scegliRuoloLogin.getValue().toLowerCase();
-        model.login(email, password,ruolo);
+        model.login(email, password);
         
         
     }
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        scegliRuoloLogin.setItems(ruoli);
-        scegliRuoloLogin.setValue("Allenatore");
         scegliRuoloRegistrazione.setItems(ruoli);
         scegliRuoloRegistrazione.setValue("Allenatore");
         model=new LoginModel();
