@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.*;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Projections.exclude;
 import com.mycompany.mercato.allenatore.AllenatoreInterface;
 import com.mycompany.mercato.amministratoreDelegato.AmministratoreDelegatoInterface;
 import com.mycompany.mercato.amministratoreSquadra.AmministratoreSquadraInterface;
@@ -30,7 +31,12 @@ public class MongoDataAccess implements AmministratoreSistemaInterface, Amminist
     private final String dbName="mercato";
     private final String nomeCollectionUtenti="utenti";
     
-    
+    /**
+     * Instaura la connessione con il database
+     * prende come parametro il nome della collection
+     * @param collection
+     * @throws Exception 
+     */
     private void apriConnessione(String collection) throws Exception{
         System.err.println("mongodb://"+this.ip+":"+this.porta);
         mongoClient=MongoClients.create("mongodb://"+this.ip+":"+this.porta);
@@ -39,14 +45,17 @@ public class MongoDataAccess implements AmministratoreSistemaInterface, Amminist
         
         
     }
+    /**
+     * Chiude la connessione col database
+     */
     private void chiudiConnessione(){
         mongoClient.close();
     }
-    //
-    //la funzione controlla se l'email esiste già
-    // 0 l'email non esiste
-    // 1 l'email esiste
-    // 2 altri errori
+    /**
+     * La funzione verifica l'esistenza dell'email nel database
+     * @param email
+     * @return 0 se l'email non esiste;1 se l'email esiste;2 se ci sono altri errori
+     */
     public int controllaEsistenzaUtente(String email){
         Document trovaUtente;
         try {
@@ -59,12 +68,15 @@ public class MongoDataAccess implements AmministratoreSistemaInterface, Amminist
            return 1;
        return 0;
     }
-    //
-    // la funzione registra l'utente
-    // 0 se utente inserito correttamente
-    // 1 email esistente
-    // 2 altri errori
-    //
+    /**
+     * La funzione è utilizzata per registrare l'utente nel database
+     * @param nome
+     * @param cognome
+     * @param email
+     * @param password
+     * @param ruolo
+     * @return 0 se utente è inserito correttamente;1 email esistente;2 altri errori
+     */
     public int registraUtente(String nome,String cognome,String email,String password,String ruolo){
         try {
             apriConnessione(nomeCollectionUtenti);
@@ -104,7 +116,7 @@ public class MongoDataAccess implements AmministratoreSistemaInterface, Amminist
             return null;
         }
         try{
-            utenteDoc = collection.find(and(eq("email", email), eq("password", password))).first();
+            utenteDoc = collection.find(and(eq("email", email), eq("password", password))).projection(exclude("password")).first();
             
         } catch(Exception e){
             return null;

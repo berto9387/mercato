@@ -14,12 +14,12 @@ import org.bson.types.ObjectId;
  *
  * @author tony_
  */
-public class ObjectIdDeserializer extends JsonDeserializer<ObjectId> {
+public class ObjectIdDeserializer extends JsonDeserializer<String> {
 
     @Override
-    public ObjectId deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public String deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         JsonNode oid = ((JsonNode)p.readValueAsTree()).get("$oid");
-        return new ObjectId(oid.asText());
+        return oid.asText();
     }
 
 }

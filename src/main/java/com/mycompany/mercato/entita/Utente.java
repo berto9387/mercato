@@ -17,18 +17,17 @@ public class Utente {
     
     @Id
     @JsonDeserialize(using = ObjectIdDeserializer.class)
-    private ObjectId _id;
+    private String _id;
     private String nome;
     private String cognome;
     private String email;
-    private String password;
     private String ruolo;
 
-    public ObjectId getId() {
+    public String getId() {
         return _id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this._id = id;
     }
     public Utente(){};
@@ -39,24 +38,6 @@ public class Utente {
         this.email = email;
         this.ruolo = ruolo;
     }
-
-    @Override
-    public String toString() {
-        return "Utente{" + "_id=" + _id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", password=" + password + ", ruolo=" + ruolo + '}';
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    
-
-
     public String getNome() {
         return nome;
     }
@@ -87,6 +68,11 @@ public class Utente {
 
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
+    }
+
+    @Override
+    public String toString() {
+        return "Utente{" + "_id=" + _id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", ruolo=" + ruolo + '}';
     }
     
     
