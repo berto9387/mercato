@@ -20,9 +20,19 @@ public class Societa {
     private ArrayList<ProfiloInteresse> profiliInteresse;
     private ArrayList<GiocatorePreferito> giocatoriPreferiti;
 
-    public Societa(String id) {
-        this.id = id;
+    public Societa() {
     }
+    
+    public Societa(String id, String nomeSocieta, String nazione, ArrayList<UtenteSocieta> teamSocieta, ArrayList<ProfiloInteresse> profiliInteresse, ArrayList<GiocatorePreferito> giocatoriPreferiti) {
+        this.id = id;
+        this.nomeSocieta = nomeSocieta;
+        this.nazione = nazione;
+        this.teamSocieta = teamSocieta;
+        this.profiliInteresse = profiliInteresse;
+        this.giocatoriPreferiti = giocatoriPreferiti;
+    }
+
+    
 
     public String getId() {
         return id;

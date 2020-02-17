@@ -51,7 +51,9 @@ public class Login_Signup_Controller implements Initializable {
     private PasswordField passwordRegistrazione;
 
     @FXML
-    private  ChoiceBox<String> scegliRuolo;
+    private  ChoiceBox<String> scegliRuoloRegistrazione;
+    @FXML
+    private ChoiceBox<String> scegliRuoloLogin;
     
 
     @FXML
@@ -81,7 +83,7 @@ public class Login_Signup_Controller implements Initializable {
         String cognome=cognomeRegistrazione.getText().toLowerCase();
         String email=emailRegistrazione.getText().toLowerCase();
         String password=passwordRegistrazione.getText().toLowerCase();
-        String ruolo=scegliRuolo.getValue().toLowerCase();
+        String ruolo=scegliRuoloRegistrazione.getValue().toLowerCase();
         int creazioneUtente=model.registraUtente(nome,cognome,email,password,ruolo);
         System.err.println(creazioneUtente);
     }
@@ -89,15 +91,18 @@ public class Login_Signup_Controller implements Initializable {
     void login(ActionEvent event) {
         String email=emailField.getText().toLowerCase();
         String password=passwordField.getText().toLowerCase();
-        model.login(email, password);
+        String ruolo=scegliRuoloLogin.getValue().toLowerCase();
+        model.login(email, password,ruolo);
         
         
     }
     
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        scegliRuolo.setItems(ruoli);
-        scegliRuolo.setValue("Allenatore");
+        scegliRuoloLogin.setItems(ruoli);
+        scegliRuoloLogin.setValue("Allenatore");
+        scegliRuoloRegistrazione.setItems(ruoli);
+        scegliRuoloRegistrazione.setValue("Allenatore");
         model=new LoginModel();
     }    
 }

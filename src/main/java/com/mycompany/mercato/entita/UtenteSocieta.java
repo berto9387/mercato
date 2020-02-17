@@ -16,9 +16,11 @@ public class UtenteSocieta extends Utente{
     private Societa societa;
     private ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti;
 
-    public UtenteSocieta(String nome, String cognome, String email, String ruolo) {
-        super(nome, cognome, email, ruolo);
+    public UtenteSocieta(String _id, String nome, String cognome, String email, String ruolo) {
+        super(_id, nome, cognome, email, ruolo);
     }
+    
+    
 
     public Societa getSocieta() {
         return societa;
@@ -35,6 +37,7 @@ public class UtenteSocieta extends Utente{
     public void setGiocatoriPreferitiAggiunti(ArrayList<GiocatorePreferito> giocatoriPreferitiAggiunti) {
         this.giocatoriPreferitiAggiunti = giocatoriPreferitiAggiunti;
     }
+    
 
     
 }

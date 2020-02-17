@@ -5,39 +5,35 @@
  */
 package com.mycompany.mercato.entita;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.mycompany.mercato.ObjectIdDeserializer;
-import org.bson.types.ObjectId;
-import org.mongojack.Id;
 /**
  *
  * @author tony_
  */
-public class Utente {
+public abstract class Utente {
     
-    @Id
-    @JsonDeserialize(using = ObjectIdDeserializer.class)
+    
     private String _id;
     private String nome;
     private String cognome;
     private String email;
     private String ruolo;
 
-    public String getId() {
-        return _id;
-    }
-
-    public void setId(String id) {
-        this._id = id;
-    }
-    public Utente(){};
-    public Utente(String nome, String cognome, String email, String ruolo) {
-        
+    public Utente(String _id, String nome, String cognome, String email, String ruolo) {
+        this._id = _id;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.ruolo = ruolo;
     }
+
+    public String getId() {
+        return _id;
+    }
+
+    public void setId(String _id) {
+        this._id = _id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -74,6 +70,8 @@ public class Utente {
     public String toString() {
         return "Utente{" + "_id=" + _id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", ruolo=" + ruolo + '}';
     }
+
+    
     
     
 }

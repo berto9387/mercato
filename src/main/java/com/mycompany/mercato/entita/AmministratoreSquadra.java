@@ -12,9 +12,23 @@ import java.util.ArrayList;
  * @author tony_
  */
 public class AmministratoreSquadra extends UtenteSocieta{
+    private ArrayList<UtenteSocieta> teamSocieta;
 
-    public AmministratoreSquadra(String nome, String cognome, String email, String ruolo) {
-        super(nome, cognome, email, ruolo);
+    public AmministratoreSquadra(ArrayList<UtenteSocieta> teamSocieta, String _id, String nome, String cognome, String email, String ruolo) {
+        super(_id, nome, cognome, email, ruolo);
+        this.teamSocieta = teamSocieta;
+    }
+
+
+    
+    
+
+    public ArrayList<UtenteSocieta> getTeamSocieta() {
+        return teamSocieta;
+    }
+
+    public void setTeamSocieta(ArrayList<UtenteSocieta> teamSocieta) {
+        this.teamSocieta = teamSocieta;
     }
     
 }

@@ -13,10 +13,12 @@ import java.util.ArrayList;
  */
 public class Osservatore extends UtenteSocieta{
     private ArrayList<Report> report;
-    
-    public Osservatore(ArrayList<Report> report,String nome, String cognome, String email, String ruolo) {
-        super(nome, cognome, email, ruolo);
+
+    public Osservatore(ArrayList<Report> report, String _id, String nome, String cognome, String email, String ruolo) {
+        super(_id, nome, cognome, email, ruolo);
         this.report = report;
     }
+    
+    
     
 }

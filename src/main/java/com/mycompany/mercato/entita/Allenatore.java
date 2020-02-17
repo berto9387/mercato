@@ -15,9 +15,11 @@ public class Allenatore extends UtenteSocieta{
     
     private ArrayList<ProfiloInteresse> profiloInteresse;
 
-    public Allenatore(ArrayList<ProfiloInteresse> profiloInteresse, String nome, String cognome, String email, String ruolo) {
-        super(nome, cognome, email, ruolo);
+    public Allenatore(ArrayList<ProfiloInteresse> profiloInteresse, String _id, String nome, String cognome, String email, String ruolo) {
+        super(_id, nome, cognome, email, ruolo);
         this.profiloInteresse = profiloInteresse;
     }
+
+    
     
 }
