@@ -63,8 +63,12 @@ public class Login_Signup_Controller implements Initializable {
     void formLogin(ActionEvent event) {
         registratiVBox.setVisible(false);
         loginVBox.setVisible(true);
-        pageRegistrati.getStyleClass().remove("active");
-        pageLogin.getStyleClass().add("active");
+        if(pageRegistrati.getStyleClass().contains("active") && !pageLogin.getStyleClass().contains("active")){
+            pageRegistrati.getStyleClass().remove("active");
+            pageLogin.getStyleClass().add("active");
+        }
+            
+        
        
         
     }
@@ -73,8 +77,12 @@ public class Login_Signup_Controller implements Initializable {
     void formRegistrati(ActionEvent event) {
         loginVBox.setVisible(false);
         registratiVBox.setVisible(true);
-        pageLogin.getStyleClass().remove("active");
-        pageRegistrati.getStyleClass().add("active");
+        if(!pageRegistrati.getStyleClass().contains("active") && pageLogin.getStyleClass().contains("active")){
+            pageRegistrati.getStyleClass().add("active");
+            pageLogin.getStyleClass().remove("active");
+        }
+            
+        
         
     }
     @FXML
