@@ -21,8 +21,4 @@ public class Allenatore extends UtenteSocieta{
         super(societa, _id, nome, cognome, email, ruolo);
     }
     
-    
-
-    
-    
 }

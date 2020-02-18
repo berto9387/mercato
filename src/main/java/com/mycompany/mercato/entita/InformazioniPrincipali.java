@@ -40,10 +40,6 @@ public class InformazioniPrincipali {
         this.report = report;
     }
 
-    
-
-    
-
     public String getNome() {
         return nome;
     }

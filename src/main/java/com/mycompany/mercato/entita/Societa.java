@@ -16,8 +16,8 @@ public class Societa {
     private String id;
     private String nomeSocieta;
     private String nazione;
-    private ArrayList<ProfiloInteresse> profiliInteresse;
-    private ArrayList<InformazioniPrincipali> giocatoriPreferiti;
+    private ArrayList<ProfiloInteresse> profiliInteresse = new ArrayList<>();
+    private ArrayList<InformazioniPrincipali> giocatoriPreferiti = new ArrayList<>();
 
     public Societa() {
     }

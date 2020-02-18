@@ -1,5 +1,6 @@
 package com.mycompany.mercato.db;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.*;
 import static com.mongodb.client.model.Filters.and;
@@ -140,15 +141,17 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
             for(Document doc: list){
                 Report report=null;
                 if(doc.get("report")!=null){
+                    System.out.println("Report esistente!!");
                     Document reportDoc=(Document)doc.get("report");
-                    report=new Report(reportDoc.getObjectId("_id").toString(), reportDoc.getString("commento"), reportDoc.getInteger("rating")); 
+                    System.out.println(reportDoc.toString());
+                    report=new Report(reportDoc.getObjectId("_id").toString(), reportDoc.getString("commento"), reportDoc.getInteger("rating"));
                 }
 
-                InformazioniPrincipali aux=new InformazioniPrincipali(doc.getObjectId("idCalciatore").toString(), doc.getString("nome"), doc.getString("ruoloPrincipale"), 
+                InformazioniPrincipali aux=new InformazioniPrincipali(doc.getObjectId("_id").toString(), doc.getString("nome"), doc.getString("ruoloPrincipale"), 
                                                                         doc.getString("squadra"), new Date(doc.getLong("dataNascita")), doc.getString("valoreMercato"), 
                                                                         doc.getString("nazionalita"), doc.getInteger("giudizioDirigenza"), doc.getInteger("giudizioAllenatore"),doc.getString("propostoDa"),report);
 
-               soc.addGiocatorePreferito(aux);
+                soc.addGiocatorePreferito(aux);
             }
         }
         if(societaDoc.get("listaProfiliDiInteresse")!=null){
@@ -236,8 +239,15 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
             } else{
                 adminSquadra=new AmministratoreSquadra(societaDoc.getString("allenatore"),societaDoc.getString("osservatore"),societaDoc.getString("amministratoreDelegato"),soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
-            } 
-            System.out.println(allenatore);
+            }
+            ObjectMapper mapper = new ObjectMapper();
+            try{
+            String jsonInString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allenatore);
+            System.out.println(jsonInString2);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+           
             
         }
         return 0;

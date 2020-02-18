@@ -18,17 +18,11 @@ public class UtenteSocieta extends Utente{
     public UtenteSocieta() {
     }
 
-    
-
     public UtenteSocieta(Societa societa, String _id, String nome, String cognome, String email, String ruolo) {
         super(_id, nome, cognome, email, ruolo);
         this.societa = societa;
     }
     
-    
-    
-    
-
     public Societa getSocieta() {
         return societa;
     }
@@ -39,10 +33,7 @@ public class UtenteSocieta extends Utente{
 
     @Override
     public String toString() {
-        return super.toString()+"-->"+societa.getNazione(); //To change body of generated methods, choose Tools | Templates.
+        return "UtenteSocieta{" + "societa=" + societa + '}';
     }
 
-    
-    
-    
 }
