@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>-->
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -34,13 +36,13 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="pageLogin" mnemonicParsing="false"  onAction="#formLogin"  text="Login">
+                  <Button fx:id="pageLogin" mnemonicParsing="false" onAction="#formLogin" text="Login">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                      <styleClass>
                         <String fx:value="loginPageButtons" />
-                        <!--<String fx:value="active" />-->
+                        <String fx:value="active" />
                      </styleClass>
                   </Button>
                </children>
@@ -51,7 +53,8 @@
          <children>
             <HBox alignment="CENTER" prefWidth="250.0" styleClass="containerField">
                <children>
-                  <FontAwesomeIconView glyphName="USER" styleClass="icon" />
+                  <FontAwesomeIcon fill="#fa9805" glyphName="USER" size="1.3em" />
+                  <!--<FontAwesomeIconView glyphName="USER" styleClass="icon" />-->
                   <TextField fx:id="emailField" prefHeight="40.0" promptText="email" styleClass="inputField" HBox.hgrow="ALWAYS" />
                </children>
                <VBox.margin>
@@ -60,7 +63,8 @@
             </HBox>
             <HBox alignment="CENTER" prefWidth="250.0" styleClass="containerField">
                <children>
-                  <FontAwesomeIconView glyphName="KEY" styleClass="icon" />
+                  <FontAwesomeIcon fill="#fa9805" glyphName="KEY" size="1.3em" />
+                  <!--<FontAwesomeIconView glyphName="KEY" styleClass="icon" />-->
                   <TextField fx:id="passwordField" accessibleRole="PASSWORD_FIELD" promptText="password" styleClass="inputField" HBox.hgrow="ALWAYS" />
                </children>
                <VBox.margin>
@@ -72,8 +76,11 @@
                   <Insets top="20.0" />
                </VBox.margin>
                <graphic>
-                  <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="2em" styleClass="icon" />
+                  <FontAwesomeIcon fill="#fa9805" glyphName="ANGLE_RIGHT" size="2em" />
                </graphic>
+<!--               <graphic>
+                  <FontAwesomeIconView glyphName="ANGLE_RIGHT" size="2em" styleClass="icon" />
+               </graphic>-->
             </Button>
             <HBox prefHeight="39.0" prefWidth="300.0">
                <children>
@@ -125,10 +132,13 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="registratiButton" mnemonicParsing="false" onAction="#registrazione" prefHeight="31.0" prefWidth="300.0" styleClass="enterButton" text="Registrati">
+            <Button fx:id="registratiButton" mnemonicParsing="false" onAction="#registrazione" prefHeight="31.0" prefWidth="300.0" styleClass="enterButton" text="    Registrati">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+               <graphic>
+                  <FontAwesomeIcon fill="#fa9805" glyphName="ANGLE_RIGHT" size="2em" />
+               </graphic>
             </Button>
             <HBox prefHeight="39.0" prefWidth="300.0">
                <children>

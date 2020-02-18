@@ -70,10 +70,10 @@
     -fx-border-width: 2px;
 }
 
-.enterButton .icon{
-    -fx-font-size:3em;
+/*.enterButton .icon{
+    -fx-font-size: 3em;
     -fx-fill:orange;
-}
+}*/
 
 .err_label{
     -fx-text-fill: #ff9933;
@@ -86,5 +86,4 @@
     -fx-background-color:#00000059;
     -fx-background-radius:10px;
     -fx-padding: 0px 8px 0px 8px;
-    /*-fx-opacity: 0.7;*/
 }
