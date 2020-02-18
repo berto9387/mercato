@@ -192,9 +192,15 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
                 if(societaDoc.get("giocatoriPreferiti")!=null){
                     List<Document> list=(List<Document>)societaDoc.get("giocatoriPreferiti");
                     for(Document doc: list){
-                        InformazioniPrincipali aux=new InformazioniPrincipali(doc.getObjectId("_id").toString(), doc.getString("nome"), doc.getString("ruoloPrincipale"), 
+                        Report report=null;
+                        if(doc.get("report")!=null){
+                            Document reportDoc=(Document)doc.get("report");
+                            report=new Report(reportDoc.getObjectId("_id").toString(), reportDoc.getString("commento"), reportDoc.getInteger("rating")); 
+                        }
+                        
+                        InformazioniPrincipali aux=new InformazioniPrincipali(doc.getObjectId("idCalciatore").toString(), doc.getString("nome"), doc.getString("ruoloPrincipale"), 
                                                                                 doc.getString("squadra"), new Date(doc.getLong("dataNascita")), doc.getString("valoreMercato"), 
-                                                                                doc.getString("nazionalita"), doc.getInteger("giudizioDirigenza"), doc.getInteger("giudizioAllenatore"));
+                                                                                doc.getString("nazionalita"), doc.getInteger("giudizioDirigenza"), doc.getInteger("giudizioAllenatore"),doc.getString("propostoDa"),report);
                     
                        soc.addGiocatorePreferito(aux);
                     }

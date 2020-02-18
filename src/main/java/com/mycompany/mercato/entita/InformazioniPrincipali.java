@@ -14,7 +14,7 @@ import java.util.Date;
  * @author tony_
  */
 public class InformazioniPrincipali {
-    private String _id;
+    private String idCalciatore;
     private String nome;
     private String ruoloPrincipale;
     private String squadra;
@@ -23,13 +23,11 @@ public class InformazioniPrincipali {
     private String nazionalita;
     private int giudizioDirigenza;
     private int giudizioAllenatore;
-    
-    //COMMENTATE PER FARE LE PROVE PER IL LOGIN!!!
-//    private Report report;
-//    private UtenteSocieta aggiuntoDa;
+    private String propostoDa;
+    private Report report;
 
-    public InformazioniPrincipali(String _id, String nome, String ruoloPrincipale, String squadra, Date dataNascita, String valoreMercato, String nazionalita, int giudizioDirigenza, int giudizioAllenatore) {
-        this._id = _id;
+    public InformazioniPrincipali(String idCalciatore, String nome, String ruoloPrincipale, String squadra, Date dataNascita, String valoreMercato, String nazionalita, int giudizioDirigenza, int giudizioAllenatore, String propostoDa, Report report) {
+        this.idCalciatore = idCalciatore;
         this.nome = nome;
         this.ruoloPrincipale = ruoloPrincipale;
         this.squadra = squadra;
@@ -38,15 +36,13 @@ public class InformazioniPrincipali {
         this.nazionalita = nazionalita;
         this.giudizioDirigenza = giudizioDirigenza;
         this.giudizioAllenatore = giudizioAllenatore;
+        this.propostoDa = propostoDa;
+        this.report = report;
     }
 
-    public String getId() {
-        return _id;
-    }
+    
 
-    public void setId(String _id) {
-        this._id = _id;
-    }
+    
 
     public String getNome() {
         return nome;
@@ -110,6 +106,30 @@ public class InformazioniPrincipali {
 
     public void setGiudizioAllenatore(int giudizioAllenatore) {
         this.giudizioAllenatore = giudizioAllenatore;
+    }
+
+    public String getIdCalciatore() {
+        return idCalciatore;
+    }
+
+    public void setIdCalciatore(String idCalciatore) {
+        this.idCalciatore = idCalciatore;
+    }
+
+    public String getPropostoDa() {
+        return propostoDa;
+    }
+
+    public void setPropostoDa(String propostoDa) {
+        this.propostoDa = propostoDa;
+    }
+
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
     }
     
     
