@@ -66,30 +66,22 @@ public class Login_Signup_Controller implements Initializable {
     void formLogin(ActionEvent event) {
         registratiVBox.setVisible(false);
         loginVBox.setVisible(true);
-        
-        if(pageRegistrati.getStyleClass().contains("active")){
+        if(pageRegistrati.getStyleClass().contains("active") && !pageLogin.getStyleClass().contains("active")){
             pageRegistrati.getStyleClass().remove("active");
-            pageRegistrati.getStyleClass().add("loginPageButtons");
-        }
-        if(!pageLogin.getStyleClass().contains("active"))
             pageLogin.getStyleClass().add("active");
-    
+        }
     }
 
     @FXML
     void formRegistrati(ActionEvent event) {
         loginVBox.setVisible(false);
         registratiVBox.setVisible(true);
-        
-        if(pageLogin.getStyleClass().contains("active")){
-            pageLogin.getStyleClass().remove("active");
-            pageLogin.getStyleClass().add("loginPageButtons");
-        }
-        if(!pageRegistrati.getStyleClass().contains("active")){
+        if(!pageRegistrati.getStyleClass().contains("active") && pageLogin.getStyleClass().contains("active")){
             pageRegistrati.getStyleClass().add("active");
+            pageLogin.getStyleClass().remove("active");
         }
-        
     }
+    
     @FXML
     void registrazione(ActionEvent event) {
         String nome=nomeRegistazione.getText().toLowerCase();
@@ -133,4 +125,5 @@ public class Login_Signup_Controller implements Initializable {
         err_reg_label.setVisible(false);
         err_log_label.setVisible(false);
     }    
+    
 }
