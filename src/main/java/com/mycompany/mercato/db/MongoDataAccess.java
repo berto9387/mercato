@@ -103,7 +103,7 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
      * @param idSocieta
      * @return null se ci sono stati errori
      */
-    private Document ricercaSocieta(ObjectId idSocieta){
+    private Document ricercaSocietaDoc(ObjectId idSocieta){
         Document societaDoc=null;
        
         try {
@@ -121,6 +121,46 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
         }
         return societaDoc;
         
+    }
+    private Societa creaSocieta(Document societaDoc) {
+        Societa soc=new Societa();
+        if(societaDoc.getObjectId("_id")!=null){
+            soc.setId(societaDoc.getObjectId("_id").toString());
+        }else{
+            return null;
+        } 
+        if(societaDoc.getString("nomeSocieta")!=null){
+            soc.setNomeSocieta(societaDoc.getString("nomeSocieta"));
+        }
+        if(societaDoc.getString("nazione")!=null){
+            soc.setNazione(societaDoc.getString("nazione"));
+        } 
+        if(societaDoc.get("giocatoriPreferiti")!=null){
+            List<Document> list=(List<Document>)societaDoc.get("giocatoriPreferiti");
+            for(Document doc: list){
+                Report report=null;
+                if(doc.get("report")!=null){
+                    Document reportDoc=(Document)doc.get("report");
+                    report=new Report(reportDoc.getObjectId("_id").toString(), reportDoc.getString("commento"), reportDoc.getInteger("rating")); 
+                }
+
+                InformazioniPrincipali aux=new InformazioniPrincipali(doc.getObjectId("idCalciatore").toString(), doc.getString("nome"), doc.getString("ruoloPrincipale"), 
+                                                                        doc.getString("squadra"), new Date(doc.getLong("dataNascita")), doc.getString("valoreMercato"), 
+                                                                        doc.getString("nazionalita"), doc.getInteger("giudizioDirigenza"), doc.getInteger("giudizioAllenatore"),doc.getString("propostoDa"),report);
+
+               soc.addGiocatorePreferito(aux);
+            }
+        }
+        if(societaDoc.get("listaProfiliDiInteresse")!=null){
+            List<Document> list=(List<Document>)societaDoc.get("listaProfiliDiInteresse");
+            for(Document doc: list){
+
+                ProfiloInteresse aux=new ProfiloInteresse(doc.getObjectId("_id").toString(), doc.getString("nomeLista"), doc.getString("descrizioneCaratteristiche"));
+
+               soc.addProfiloInteresse(aux);
+            }
+        }
+        return soc;
     }
     /**
      * La funzione è utilizzata per registrare l'utente nel database
@@ -176,35 +216,12 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             return 0;
         } else {
-            Document societaDoc=ricercaSocieta(utenteDoc.getObjectId("societa"));
-            Societa soc=new Societa();
+            Document societaDoc=ricercaSocietaDoc(utenteDoc.getObjectId("societa"));
+            
+            Societa soc=null;
        
             if(societaDoc!=null){
-                if(societaDoc.getObjectId("_id")!=null){
-                    soc.setId(societaDoc.getObjectId("_id").toString());
-                } 
-                if(societaDoc.getString("nomeSocieta")!=null){
-                    soc.setNomeSocieta(societaDoc.getString("nomeSocieta"));
-                }
-                if(societaDoc.getString("nazione")!=null){
-                    soc.setNazione(societaDoc.getString("nazione"));
-                } 
-                if(societaDoc.get("giocatoriPreferiti")!=null){
-                    List<Document> list=(List<Document>)societaDoc.get("giocatoriPreferiti");
-                    for(Document doc: list){
-                        Report report=null;
-                        if(doc.get("report")!=null){
-                            Document reportDoc=(Document)doc.get("report");
-                            report=new Report(reportDoc.getObjectId("_id").toString(), reportDoc.getString("commento"), reportDoc.getInteger("rating")); 
-                        }
-                        
-                        InformazioniPrincipali aux=new InformazioniPrincipali(doc.getObjectId("idCalciatore").toString(), doc.getString("nome"), doc.getString("ruoloPrincipale"), 
-                                                                                doc.getString("squadra"), new Date(doc.getLong("dataNascita")), doc.getString("valoreMercato"), 
-                                                                                doc.getString("nazionalita"), doc.getInteger("giudizioDirigenza"), doc.getInteger("giudizioAllenatore"),doc.getString("propostoDa"),report);
-                    
-                       soc.addGiocatorePreferito(aux);
-                    }
-                }
+                soc=creaSocieta(societaDoc);                
             }
             
             if(utenteDoc.getString("ruolo").equals(("allenatore"))){
@@ -220,11 +237,13 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
                 adminSquadra=new AmministratoreSquadra(societaDoc.getString("allenatore"),societaDoc.getString("osservatore"),societaDoc.getString("amministratoreDelegato"),soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             } 
-            System.out.println(societaDoc.toString());
+            System.out.println(allenatore);
             
         }
         return 0;
     }
+
+    
     
     
 }

@@ -73,6 +73,9 @@ public class Societa {
     public void addGiocatorePreferito(InformazioniPrincipali nuovoGiocatorePreferito) {
         this.giocatoriPreferiti.add(nuovoGiocatorePreferito);
     }
+    public void addProfiloInteresse(ProfiloInteresse nuovoProfiloInteresse) {
+        this.profiliInteresse.add(nuovoProfiloInteresse);
+    }
     
     
 }
