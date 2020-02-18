@@ -11,7 +11,6 @@ package com.mycompany.mercato.entita;
  */
 public abstract class Utente {
     
-    
     private String _id;
     private String nome;
     private String cognome;

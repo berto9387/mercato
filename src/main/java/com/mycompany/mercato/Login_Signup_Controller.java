@@ -54,7 +54,10 @@ public class Login_Signup_Controller implements Initializable {
     private  ChoiceBox<String> scegliRuoloRegistrazione;
     
     @FXML
-    private Label err_label;
+    private Label err_reg_label;
+    
+    @FXML
+    private Label err_log_label;
     
     @FXML
     private Button registratiButton;
@@ -63,18 +66,28 @@ public class Login_Signup_Controller implements Initializable {
     void formLogin(ActionEvent event) {
         registratiVBox.setVisible(false);
         loginVBox.setVisible(true);
-        pageRegistrati.getStyleClass().remove("active");
-        pageLogin.getStyleClass().add("active");
-       
         
+        if(pageRegistrati.getStyleClass().contains("active")){
+            pageRegistrati.getStyleClass().remove("active");
+            pageRegistrati.getStyleClass().add("loginPageButtons");
+        }
+        if(!pageLogin.getStyleClass().contains("active"))
+            pageLogin.getStyleClass().add("active");
+    
     }
 
     @FXML
     void formRegistrati(ActionEvent event) {
         loginVBox.setVisible(false);
         registratiVBox.setVisible(true);
-        pageLogin.getStyleClass().remove("active");
-        pageRegistrati.getStyleClass().add("active");
+        
+        if(pageLogin.getStyleClass().contains("active")){
+            pageLogin.getStyleClass().remove("active");
+            pageLogin.getStyleClass().add("loginPageButtons");
+        }
+        if(!pageRegistrati.getStyleClass().contains("active")){
+            pageRegistrati.getStyleClass().add("active");
+        }
         
     }
     @FXML
@@ -86,10 +99,16 @@ public class Login_Signup_Controller implements Initializable {
         String ruolo=scegliRuoloRegistrazione.getValue().toLowerCase();
         int creazioneUtente=model.registraUtente(nome,cognome,email,password,ruolo);
         if(creazioneUtente == 1){
-            err_label.setText("Email già presente");
-            err_label.setVisible(true);
+            err_reg_label.setText("Email già presente !");
+            err_reg_label.setVisible(true);
         } else if (creazioneUtente == 0){
-            err_label.setVisible(false);
+            err_reg_label.setText("Registrazione andata a buon fine");
+            err_reg_label.setVisible(true);
+            nomeRegistazione.clear();
+            cognomeRegistrazione.clear();
+            emailRegistrazione.clear();
+            passwordRegistrazione.clear();
+            scegliRuoloRegistrazione.setValue("Allenatore");
         }
         System.err.println(creazioneUtente);
     }
@@ -97,7 +116,13 @@ public class Login_Signup_Controller implements Initializable {
     void login(ActionEvent event) {
         String email=emailField.getText().toLowerCase();
         String password=passwordField.getText().toLowerCase();
-        model.login(email, password);
+        int login = model.login(email, password);
+        if ( model.login(email, password) == 1){
+            err_log_label.setText("Email o password errate !");
+            err_log_label.setVisible(true);
+        }else if (login == 0){
+            err_log_label.setVisible(false);
+        }
     }
     
     @FXML
@@ -105,6 +130,7 @@ public class Login_Signup_Controller implements Initializable {
         scegliRuoloRegistrazione.setItems(ruoli);
         scegliRuoloRegistrazione.setValue("Allenatore");
         model=new LoginModel();
-        err_label.setVisible(false);
+        err_reg_label.setVisible(false);
+        err_log_label.setVisible(false);
     }    
 }

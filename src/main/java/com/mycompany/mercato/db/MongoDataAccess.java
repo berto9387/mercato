@@ -253,7 +253,4 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
         return 0;
     }
 
-    
-    
-    
 }
