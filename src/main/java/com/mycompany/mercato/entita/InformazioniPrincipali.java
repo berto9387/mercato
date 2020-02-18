@@ -39,6 +39,78 @@ public class InformazioniPrincipali {
         this.giudizioDirigenza = giudizioDirigenza;
         this.giudizioAllenatore = giudizioAllenatore;
     }
+
+    public String getId() {
+        return _id;
+    }
+
+    public void setId(String _id) {
+        this._id = _id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getRuoloPrincipale() {
+        return ruoloPrincipale;
+    }
+
+    public void setRuoloPrincipale(String ruoloPrincipale) {
+        this.ruoloPrincipale = ruoloPrincipale;
+    }
+
+    public String getSquadra() {
+        return squadra;
+    }
+
+    public void setSquadra(String squadra) {
+        this.squadra = squadra;
+    }
+
+    public Date getDataNascita() {
+        return dataNascita;
+    }
+
+    public void setDataNascita(Date dataNascita) {
+        this.dataNascita = dataNascita;
+    }
+
+    public String getValoreMercato() {
+        return valoreMercato;
+    }
+
+    public void setValoreMercato(String valoreMercato) {
+        this.valoreMercato = valoreMercato;
+    }
+
+    public String getNazionalita() {
+        return nazionalita;
+    }
+
+    public void setNazionalita(String nazionalita) {
+        this.nazionalita = nazionalita;
+    }
+
+    public int getGiudizioDirigenza() {
+        return giudizioDirigenza;
+    }
+
+    public void setGiudizioDirigenza(int giudizioDirigenza) {
+        this.giudizioDirigenza = giudizioDirigenza;
+    }
+
+    public int getGiudizioAllenatore() {
+        return giudizioAllenatore;
+    }
+
+    public void setGiudizioAllenatore(int giudizioAllenatore) {
+        this.giudizioAllenatore = giudizioAllenatore;
+    }
     
     
 }

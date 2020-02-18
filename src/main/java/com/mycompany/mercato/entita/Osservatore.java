@@ -12,13 +12,21 @@ import java.util.ArrayList;
  * @author tony_
  */
 public class Osservatore extends UtenteSocieta{
+    //il report viene usato esclusivamente come cache nella sessione corrente
     private ArrayList<Report> report;
 
     public Osservatore() {
     }
 
-    public Osservatore(ArrayList<Report> report, Societa societa, String _id, String nome, String cognome, String email, String ruolo) {
+    public Osservatore(Societa societa, String _id, String nome, String cognome, String email, String ruolo) {
         super(societa, _id, nome, cognome, email, ruolo);
+    }
+
+    public ArrayList<Report> getReport() {
+        return report;
+    }
+
+    public void setReport(ArrayList<Report> report) {
         this.report = report;
     }
     

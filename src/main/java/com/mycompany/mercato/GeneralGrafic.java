@@ -16,22 +16,10 @@ public class GeneralGrafic{
     protected static Osservatore osservatore;
     
     
-    protected static Thread popolaLevelDb;
     public static void setParameters(Scene scene, Stage stage)
     {
         mainScene=scene;
         mainStage=stage;
-        admin=new AmministratoreSistema();
-        adminSquadra=new AmministratoreSquadra();
-        allenatore=new Allenatore();
-        ad=new AmministratoreDelegato();
-        osservatore=new Osservatore();
                
     }
 }
-/*
-------------------------COMMENTI DI GIANLUCA-----------------------------------
-La classe general grafic serve per rendere i parametri membro condivisi da 
-tutte le classi che implementano le varie interfacce grafiche
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NOTA BENE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-*/

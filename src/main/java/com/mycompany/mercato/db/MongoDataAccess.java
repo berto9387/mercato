@@ -205,13 +205,12 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
                 allenatore=new Allenatore(soc,utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             } else if(utenteDoc.getString("ruolo").equals(("osservatore"))){
-                osservatore=new Osservatore(null, soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                osservatore=new Osservatore(soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             }else if(utenteDoc.getString("ruolo").equals(("amministratore delegato"))){
                 ad=new AmministratoreDelegato(soc,utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             } else{
-                //gestire il team società
                 adminSquadra=new AmministratoreSquadra(societaDoc.getString("allenatore"),societaDoc.getString("osservatore"),societaDoc.getString("amministratoreDelegato"),soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             } 
