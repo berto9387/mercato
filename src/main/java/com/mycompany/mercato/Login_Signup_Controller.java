@@ -1,15 +1,24 @@
 package com.mycompany.mercato;
 
 import com.mycompany.mercato.entita.Utente;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Login_Signup_Controller implements Initializable {
     
@@ -58,9 +67,10 @@ public class Login_Signup_Controller implements Initializable {
     
     @FXML
     private Label err_log_label;
-    
     @FXML
     private Button registratiButton;
+    @FXML
+    private Circle btnClose;
 
     @FXML
     void formLogin(ActionEvent event) {
@@ -104,20 +114,27 @@ public class Login_Signup_Controller implements Initializable {
         }
         System.err.println(creazioneUtente);
     }
+    
     @FXML
-    void login(ActionEvent event) {
+    private void login(ActionEvent event) throws IOException {
         String email=emailField.getText().toLowerCase();
         String password=passwordField.getText().toLowerCase();
         int login = model.login(email, password);
         if ( model.login(email, password) == 1){
             err_log_label.setText("Email o password errate !");
             err_log_label.setVisible(true);
-        }else if (login == 0){
+        }else if (login == 0){ //Carico l'interfaccia sistema
             err_log_label.setVisible(false);
+            
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AmministratoreSistema.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = (Stage)(((Node)event.getSource()).getScene().getWindow());
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);
+            stage.show();
         }
     }
     
-    @FXML
     public void initialize(URL url, ResourceBundle rb) {
         scegliRuoloRegistrazione.setItems(ruoli);
         scegliRuoloRegistrazione.setValue("Allenatore");
@@ -125,5 +142,10 @@ public class Login_Signup_Controller implements Initializable {
         err_reg_label.setVisible(false);
         err_log_label.setVisible(false);
     }    
+
+    @FXML
+    private void handleClose(MouseEvent event) {
+        System.exit(0);
+    }
     
 }

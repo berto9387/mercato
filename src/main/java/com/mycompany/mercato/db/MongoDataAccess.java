@@ -10,7 +10,7 @@ import com.mycompany.mercato.GeneralGrafic;
 import com.mycompany.mercato.allenatore.AllenatoreInterface;
 import com.mycompany.mercato.amministratoreDelegato.AmministratoreDelegatoInterface;
 import com.mycompany.mercato.amministratoreSquadra.AmministratoreSquadraInterface;
-import com.mycompany.mercato.amministratoresSistema.AmministratoreSistemaInterface;
+import com.mycompany.mercato.amministratoreSistema.AmministratoreSistemaInterface;
 import com.mycompany.mercato.entita.*;
 import com.mycompany.mercato.osservatore.OsservatoreInterface;
 import java.io.IOException;

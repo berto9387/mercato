@@ -3,6 +3,22 @@
     -fx-background-image:url("../img/back.jpeg");
     -fx-background-size:cover;
 }
+
+.backgroundImg{
+    /*-fx-background-image:url("../img/back.jpeg");*/
+    -fx-background-color:#00000059;
+    -fx-background-size:cover;
+}
+
+.topHbox{
+    -fx-padding: 8px 15px 8px 15px;
+}
+
+.closeBtn{
+    -fx-fill: #FC5D57;
+    -fx-stroke: white;
+}
+
 .loginPageButtons{
     -fx-background-color:transparent;
     -fx-text-fill:white;
@@ -70,11 +86,6 @@
     -fx-border-width: 2px;
 }
 
-/*.enterButton .icon{
-    -fx-font-size: 3em;
-    -fx-fill:orange;
-}*/
-
 .err_label{
     -fx-text-fill: #ff9933;
     -fx-font-family: Roboto;
@@ -86,4 +97,8 @@
     -fx-background-color:#00000059;
     -fx-background-radius:10px;
     -fx-padding: 0px 8px 0px 8px;
+}
+
+.mainFxmlClass{
+    -fx-background-color:#00000059;
 }
