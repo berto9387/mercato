@@ -5,8 +5,6 @@
  */
 package com.mycompany.mercato.allenatore;
 
-import com.mycompany.mercato.entita.Allenatore;
-
 /**
  *
  * @author tony_
@@ -14,5 +12,4 @@ import com.mycompany.mercato.entita.Allenatore;
 public class AllenatoreController {
     
     private AllenatoreModel model;
-    private Allenatore utente;
 }

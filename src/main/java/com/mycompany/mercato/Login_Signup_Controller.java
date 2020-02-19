@@ -1,6 +1,5 @@
 package com.mycompany.mercato;
 
-import com.mycompany.mercato.entita.Utente;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,12 +17,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Login_Signup_Controller implements Initializable {
     
     private LoginModel model;
-    private Utente utente;
     ObservableList<String> ruoli=FXCollections.observableArrayList("Allenatore","Osservatore","Amministratore delegato","Amministratore di squadra","Admin");
     
     @FXML

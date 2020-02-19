@@ -215,7 +215,7 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
         }
         
         if(utenteDoc.getString("ruolo").equals(("admin"))){
-            admin=new AmministratoreSistema(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+            utente=new Utente(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
                     utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
             return 0;
         } else {
@@ -226,23 +226,12 @@ public class MongoDataAccess extends GeneralGrafic implements AmministratoreSist
             if(societaDoc!=null){
                 soc=creaSocieta(societaDoc);                
             }
+            utente=new Utente(utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
+                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"),soc);
             
-            if(utenteDoc.getString("ruolo").equals(("allenatore"))){
-                allenatore=new Allenatore(soc,utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
-                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
-            } else if(utenteDoc.getString("ruolo").equals(("osservatore"))){
-                osservatore=new Osservatore(soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
-                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
-            }else if(utenteDoc.getString("ruolo").equals(("amministratore delegato"))){
-                ad=new AmministratoreDelegato(soc,utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
-                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
-            } else{
-                adminSquadra=new AmministratoreSquadra(societaDoc.getString("allenatore"),societaDoc.getString("osservatore"),societaDoc.getString("amministratoreDelegato"),soc, utenteDoc.getObjectId("_id").toString(), utenteDoc.getString("nome"),
-                    utenteDoc.getString("cognome"), utenteDoc.getString("email"), utenteDoc.getString("ruolo"));
-            }
             ObjectMapper mapper = new ObjectMapper();
             try{
-            String jsonInString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(allenatore);
+            String jsonInString2 = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(utente);
             System.out.println(jsonInString2);
             }catch(Exception e){
                 e.printStackTrace();

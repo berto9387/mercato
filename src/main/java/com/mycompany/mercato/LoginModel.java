@@ -6,11 +6,6 @@
 package com.mycompany.mercato;
 
 import com.mycompany.mercato.db.MongoDataAccess;
-import com.mycompany.mercato.entita.AmministratoreSistema;
-import com.mycompany.mercato.entita.Societa;
-import com.mycompany.mercato.entita.Utente;
-import com.mycompany.mercato.entita.UtenteSocieta;
-import org.bson.Document;
 
 /**
  *
@@ -19,7 +14,6 @@ import org.bson.Document;
 public class LoginModel {
     
     private MongoDataAccess db;
-    private Utente utente;
     public LoginModel(){
         db=new MongoDataAccess();
     }

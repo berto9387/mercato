@@ -9,13 +9,14 @@ package com.mycompany.mercato.entita;
  *
  * @author tony_
  */
-public abstract class Utente {
+public class Utente {
     
     private String _id;
     private String nome;
     private String cognome;
     private String email;
     private String ruolo;
+    private Societa societa;
 
     public Utente() {
     }
@@ -26,6 +27,14 @@ public abstract class Utente {
         this.cognome = cognome;
         this.email = email;
         this.ruolo = ruolo;
+    }
+    public Utente(String _id, String nome, String cognome, String email, String ruolo, Societa societa) {
+        this._id = _id;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.ruolo = ruolo;
+        this.societa=societa;
     }
 
     public String getId() {
@@ -68,6 +77,15 @@ public abstract class Utente {
         this.ruolo = ruolo;
     }
 
+    public Societa getSocieta() {
+        return societa;
+    }
+
+    public void setSocieta(Societa societa) {
+        this.societa = societa;
+    }
+    
+    
     @Override
     public String toString() {
         return "Utente{" + "_id=" + _id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", ruolo=" + ruolo + '}';

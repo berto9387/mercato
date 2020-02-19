@@ -5,8 +5,6 @@
  */
 package com.mycompany.mercato.amministratoreDelegato;
 
-import com.mycompany.mercato.entita.AmministratoreDelegato;
-
 /**
  *
  * @author tony_
@@ -14,5 +12,4 @@ import com.mycompany.mercato.entita.AmministratoreDelegato;
 public class AmministratoreDelegatoController {
     
     private AmministratoreDelegatoModel model;
-    private AmministratoreDelegato utente;
 }

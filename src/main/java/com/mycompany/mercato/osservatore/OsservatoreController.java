@@ -5,8 +5,6 @@
  */
 package com.mycompany.mercato.osservatore;
 
-import com.mycompany.mercato.entita.Osservatore;
-
 /**
  *
  * @author tony_
@@ -14,5 +12,4 @@ import com.mycompany.mercato.entita.Osservatore;
 public class OsservatoreController {
     
     private OsservatoreModel model;
-    private Osservatore utente;
 }

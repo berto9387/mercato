@@ -6,7 +6,6 @@
 package com.mycompany.mercato.amministratoreSistema;
 
 import com.mycompany.mercato.GeneralGrafic;
-import com.mycompany.mercato.entita.AmministratoreSistema;
 import com.mycompany.mercato.GeneralGrafic.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,8 +36,8 @@ public class AmministratoreSistemaController extends GeneralGrafic implements In
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        nomeAdmin.setText(admin.getNome() + " " + admin.getCognome());
-        emailAdmin.setText(admin.getEmail());
+        nomeAdmin.setText(utente.getNome() + " " + utente.getCognome());
+        emailAdmin.setText(utente.getEmail());
        
     }    
     

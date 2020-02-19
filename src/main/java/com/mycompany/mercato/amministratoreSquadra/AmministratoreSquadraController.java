@@ -5,7 +5,6 @@
  */
 package com.mycompany.mercato.amministratoreSquadra;
 
-import com.mycompany.mercato.entita.AmministratoreSquadra;
 
 /**
  *
@@ -14,5 +13,4 @@ import com.mycompany.mercato.entita.AmministratoreSquadra;
 public class AmministratoreSquadraController {
     
     private AmministratoreSquadraModel model;
-    private AmministratoreSquadra utente;
 }
